@@ -1,0 +1,9 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="500" fill="#FAF8F5" />
+  <circle cx="400" cy="220" r="110" fill="#EDF2ED" stroke="#E9E2D9" stroke-width="2" />
+  <line x1="320" y1="160" x2="480" y2="280" stroke="#C4A17B" stroke-width="2" stroke-dasharray="6 4" />
+  <circle cx="400" cy="220" r="24" fill="#FFFFFF" stroke="#253C34" stroke-width="1.5" />
+  <text x="400" y="400" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#253C34" letter-spacing="2">
+    PICOSECOND VS NANOSECOND LASERS
+  </text>
+</svg>

@@ -1,0 +1,11 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#FAF8F5" />
+  <rect x="220" y="150" width="360" height="300" rx="18" fill="#EDF2ED" stroke="#E9E2D9" stroke-width="2" />
+  <!-- Laser Beam diagram lines -->
+  <line x1="280" y1="200" x2="520" y2="400" stroke="#C4A17B" stroke-width="2" stroke-dasharray="6 4" />
+  <circle cx="400" cy="300" r="40" fill="#FFFFFF" stroke="#253C34" stroke-width="1.5" />
+  <path d="M400 280 L400 320 M380 300 L420 300" stroke="#253C34" stroke-width="2" stroke-linecap="round" />
+  <text x="400" y="510" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#253C34" letter-spacing="3">
+    US-FDA APPROVED LASER SYSTEMS
+  </text>
+</svg>

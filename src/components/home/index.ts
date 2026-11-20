@@ -1,0 +1,11 @@
+export { HeroSection } from "./HeroSection";
+export { TrustSection } from "./TrustSection";
+export { TreatmentsSection } from "./TreatmentsSection";
+export { VirtueDifferenceSection } from "./VirtueDifferenceSection";
+export { ConcernsSection } from "./ConcernsSection";
+export { DoctorsSection } from "./DoctorsSection";
+export { PatientJourneySection } from "./PatientJourneySection";
+export { TestimonialsSection } from "./TestimonialsSection";
+export { BlogSection } from "./BlogSection";
+export { FaqSection } from "./FaqSection";
+export { CtaBannerSection } from "./CtaBannerSection";

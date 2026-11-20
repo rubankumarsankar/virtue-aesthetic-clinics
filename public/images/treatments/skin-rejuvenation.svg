@@ -1,0 +1,11 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#FAF8F5" />
+  <circle cx="400" cy="300" r="180" fill="#EDF2ED" stroke="#E9E2D9" stroke-width="2" />
+  <circle cx="400" cy="300" r="120" fill="#FFFFFF" stroke="#C4A17B" stroke-width="1.5" />
+  <path d="M400 180 C470 250, 470 350, 400 420 C330 350, 330 250, 400 180 Z" fill="#253C34" fill-opacity="0.1" />
+  <circle cx="400" cy="300" r="28" fill="#C4A17B" fill-opacity="0.25" />
+  <circle cx="400" cy="300" r="10" fill="#C4A17B" />
+  <text x="400" y="520" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#253C34" letter-spacing="3">
+    SKIN REJUVENATION &amp; BIO-CELLULAR CARE
+  </text>
+</svg>
