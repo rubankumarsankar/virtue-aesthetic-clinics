@@ -8,15 +8,15 @@ import { TreatmentMegaMenu } from "./TreatmentMegaMenu";
 import { ConcernsDropdown } from "./ConcernsDropdown";
 
 /**
- * DesktopNavigation (Matching Mockup 1:1)
- * Items:
- * - Treatments ▾
- * - Concerns ▾
- * - Clinics
- * - Our Experts
- * - Patient Stories
- * - Blog
- * - About
+ * DesktopNavigation (Recreated 1:1 from Approved Mockup)
+ * Sequence:
+ * 1. Treatments ▾ (Dropdown / Mega Menu)
+ * 2. Concerns ▾ (Dropdown)
+ * 3. Clinics
+ * 4. Our Experts (Doctors)
+ * 5. Patient Stories
+ * 6. Blog
+ * 7. About
  */
 export function DesktopNavigation() {
   const pathname = usePathname();
@@ -38,52 +38,90 @@ export function DesktopNavigation() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  const navLinks = [
-    { label: "Clinics", href: "/clinics" },
-    { label: "Our Experts", href: "/doctors" },
-    { label: "Patient Stories", href: "/patient-stories" },
-    { label: "Blog", href: "/blog" },
-    { label: "About", href: "/about" },
-  ];
-
   return (
     <nav
       className="hidden lg:flex items-center gap-1 xl:gap-2"
       role="navigation"
       aria-label="Main Navigation"
     >
-      {/* Treatments Mega Menu */}
+      {/* 1. Treatments Mega Menu */}
       <TreatmentMegaMenu
         isOpen={openMenu === "treatments"}
         onOpen={() => setOpenMenu("treatments")}
         onClose={() => setOpenMenu(null)}
       />
 
-      {/* Concerns Dropdown */}
+      {/* 2. Concerns Dropdown */}
       <ConcernsDropdown
         isOpen={openMenu === "concerns"}
         onOpen={() => setOpenMenu("concerns")}
         onClose={() => setOpenMenu(null)}
       />
 
-      {/* Remaining Links: Clinics, Our Experts, Patient Stories, Blog, About */}
-      {navLinks.map((link) => {
-        const isActive = pathname === link.href || pathname?.startsWith(`${link.href}/`);
-        return (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={cn(
-              "px-3 py-2 font-sans text-sm font-medium tracking-[0.01em] transition-colors rounded-md",
-              isActive
-                ? "text-[#253C34] font-semibold"
-                : "text-[#202923] hover:text-[#253C34]"
-            )}
-          >
-            {link.label}
-          </Link>
-        );
-      })}
+      {/* 3. Clinics */}
+      <Link
+        href="/clinics"
+        className={cn(
+          "px-2.5 py-2 font-sans text-sm font-medium tracking-[0.01em] transition-colors rounded-md",
+          pathname === "/clinics" || pathname?.startsWith("/clinics/")
+            ? "text-[#253C34] font-semibold"
+            : "text-[#202923] hover:text-[#253C34]"
+        )}
+      >
+        Clinics
+      </Link>
+
+      {/* 4. Our Experts */}
+      <Link
+        href="/doctors"
+        className={cn(
+          "px-2.5 py-2 font-sans text-sm font-medium tracking-[0.01em] transition-colors rounded-md",
+          pathname === "/doctors" || pathname?.startsWith("/doctors/")
+            ? "text-[#253C34] font-semibold"
+            : "text-[#202923] hover:text-[#253C34]"
+        )}
+      >
+        Our Experts
+      </Link>
+
+      {/* 5. Patient Stories */}
+      <Link
+        href="/patient-stories"
+        className={cn(
+          "px-2.5 py-2 font-sans text-sm font-medium tracking-[0.01em] transition-colors rounded-md",
+          pathname === "/patient-stories" || pathname?.startsWith("/patient-stories/")
+            ? "text-[#253C34] font-semibold"
+            : "text-[#202923] hover:text-[#253C34]"
+        )}
+      >
+        Patient Stories
+      </Link>
+
+      {/* 6. Blog */}
+      <Link
+        href="/blog"
+        className={cn(
+          "px-2.5 py-2 font-sans text-sm font-medium tracking-[0.01em] transition-colors rounded-md",
+          pathname === "/blog" || pathname?.startsWith("/blog/")
+            ? "text-[#253C34] font-semibold"
+            : "text-[#202923] hover:text-[#253C34]"
+        )}
+      >
+        Blog
+      </Link>
+
+      {/* 7. About */}
+      <Link
+        href="/about"
+        className={cn(
+          "px-2.5 py-2 font-sans text-sm font-medium tracking-[0.01em] transition-colors rounded-md",
+          pathname === "/about" || pathname?.startsWith("/about/")
+            ? "text-[#253C34] font-semibold"
+            : "text-[#202923] hover:text-[#253C34]"
+        )}
+      >
+        About
+      </Link>
     </nav>
   );
 }

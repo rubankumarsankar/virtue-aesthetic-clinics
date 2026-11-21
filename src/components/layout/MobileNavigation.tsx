@@ -207,11 +207,12 @@ export function MobileNavigation() {
 
             {/* Remaining Static Links */}
             {[
-              { label: "Doctors & Specialists", href: "/doctors" },
+              { label: "Clinics", href: "/clinics" },
+              { label: "Our Experts", href: "/doctors" },
               { label: "Patient Stories", href: "/patient-stories" },
-              { label: "About Us", href: "/about" },
-              { label: "Blog & Skin Science", href: "/blog" },
-              { label: "Contact Clinic", href: "/contact" },
+              { label: "Blog", href: "/blog" },
+              { label: "About", href: "/about" },
+              { label: "Contact", href: "/contact" },
             ].map((link) => (
               <Link
                 key={link.href}
@@ -228,7 +229,7 @@ export function MobileNavigation() {
           <div className="border-t border-[#E9E2D9] bg-white p-5 sm:p-6 space-y-3">
             <div className="flex items-center gap-2 text-xs text-[#52625A] justify-center mb-1">
               <MapPin className="h-3.5 w-3.5 text-[#C4A17B]" />
-              <span>Ambattur, Chennai, India</span>
+              <span>Ambattur, Chennai</span>
             </div>
 
             <LuxuryButton
@@ -239,17 +240,16 @@ export function MobileNavigation() {
               icon={<Calendar className="h-4 w-4" />}
               onClick={() => setIsOpen(false)}
             >
-              Book Consultation
+              Book a Consultation
             </LuxuryButton>
 
-            <Link
-              href="tel:+914426580000"
+            <a
+              href="tel:+919176333111"
               className="flex items-center justify-center gap-2 font-sans text-xs text-[#52625A] hover:text-[#202923] py-1"
             >
               <Phone className="h-3.5 w-3.5 text-[#C4A17B]" />
-              {/* PLACEHOLDER: Clinic contact phone */}
-              <span>Call Clinic (+91 44 2658 0000)</span>
-            </Link>
+              <span>Call Clinic (+91 91763 33111)</span>
+            </a>
           </div>
         </div>
       )}

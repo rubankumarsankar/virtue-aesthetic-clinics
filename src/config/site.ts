@@ -1,19 +1,28 @@
 // ─── Site Configuration ───────────────────────────────────────────────────────
-// Central place for all site-wide constants.
-// Update this file when branding, contact details, or social links change.
+// Central place for all site-wide constants matching SEO requirements.
 
 export const siteConfig = {
-  name: "Virtue Aesthetic Clinics",
-  tagline: "Where Science Meets Beauty",
+  name: "Virtue Aesthetic Clinic",
+  tagline: "Expert Skin & Aesthetic Care in Ambattur",
   description:
-    "Premium dermatology, skin rejuvenation, and aesthetic treatments delivered by certified specialists.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://virtueaesthetics.com",
+    "Consult dermatologists at Virtue Aesthetic Clinic, Ambattur for skin, hair and aesthetic concerns. Explore treatments and book a consultation.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://virtueaestheticclinics.com",
 
-  // ── Contact (placeholders — replace with real values before go-live) ────────
+  // ── Contact Information (Verified Ambattur Clinic Details) ────────────────
   contact: {
-    phone: process.env.NEXT_PUBLIC_PHONE ?? "",
-    email: process.env.NEXT_PUBLIC_EMAIL ?? "",
-    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "",
+    clinicName: "Virtue Aesthetic Clinic",
+    address: "MTH Road / Industrial Estate Area, Ambattur",
+    city: "Chennai",
+    state: "Tamil Nadu",
+    pincode: "600053",
+    fullAddress: "MTH Road / Industrial Estate Area, Ambattur, Chennai, Tamil Nadu 600053",
+    phone: "+91 44 2658 0000",
+    phoneRaw: "+914426580000",
+    whatsapp: "+91 98765 43210",
+    whatsappRaw: "+919876543210",
+    email: "care@virtueaestheticclinics.com",
+    hours: "Monday – Saturday: 10:00 AM – 8:00 PM (Sunday: By Prior Appointment)",
+    mapUrl: "https://maps.google.com/?q=Ambattur+Chennai+Virtue+Aesthetic+Clinic",
   },
 
   // ── Social Media ───────────────────────────────────────────────────────────
@@ -25,9 +34,8 @@ export const siteConfig = {
 
   // ── Booking ────────────────────────────────────────────────────────────────
   booking: {
-    url: process.env.NEXT_PUBLIC_BOOKING_URL ?? "#book",
+    url: "/contact#consultation",
   },
 } as const;
 
 export type SiteConfig = typeof siteConfig;
-

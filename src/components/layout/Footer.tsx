@@ -1,40 +1,36 @@
 import * as React from "react";
 import Link from "next/link";
-import { MapPin, Phone, Mail, ShieldCheck } from "lucide-react";
 import { Container } from "@components/common";
 import { Logo } from "./Logo";
 
 /**
- * Site Footer (Matching Mockup 1:1)
- * - Deep forest green surface (#1E352F)
- * - 6-column balanced editorial layout:
- *   1. Brand identity & narrative (Span 2)
- *   2. Treatments (Span 1)
- *   3. Clinics (Span 1)
- *   4. Resources (Span 1)
- *   5. Legal & Visit Us (Span 1)
- * - Thin champagne dividers & typography tokens
+ * Site Footer (Recreated 1:1 from Approved Mockup)
+ * - Clean, elegant warm ivory background (#FAF8F5) with dark luxury typography
+ * - Brand column with editorial descriptor
+ * - 5 Navigation columns: Treatments, Clinics, Resources, Legal, Visit Us
+ * - Bottom legal & copyright bar
  */
 export function Footer() {
   const currentYear = 2026;
 
   const treatments = [
     { label: "Skin Rejuvenation", href: "/treatments/skin-rejuvenation" },
-    { label: "Injectables", href: "/treatments/injectables" },
-    { label: "Skin Tightening", href: "/treatments/skin-tightening" },
-    { label: "Body Contouring", href: "/treatments/body-contouring" },
+    { label: "Injectables", href: "/treatments/skin" },
+    { label: "Skin Tightening", href: "/treatments/skin" },
+    { label: "Body Contouring", href: "/treatments/body-aesthetics/body-contouring" },
+    { label: "Laser Treatments", href: "/treatments/laser" },
   ];
 
   const clinics = [
     { label: "Our Clinics", href: "/clinics" },
-    { label: "Location & Hours", href: "/contact#locations" },
-    { label: "Clinic Experience", href: "/about" },
+    { label: "Location & Hours", href: "/clinics#hours" },
+    { label: "Clinic Experience", href: "/about#experience" },
     { label: "Book a Consultation", href: "/contact#consultation" },
   ];
 
   const resources = [
     { label: "Articles & Insights", href: "/blog" },
-    { label: "Treatment Guides", href: "/blog" },
+    { label: "Treatment Guides", href: "/treatments" },
     { label: "Patient Stories", href: "/patient-stories" },
     { label: "FAQs", href: "/#faq" },
   ];
@@ -47,41 +43,37 @@ export function Footer() {
 
   return (
     <footer
-      className="bg-[#1E352F] text-white border-t border-[#E9E2D9]/15"
+      className="bg-[#FAF8F5] text-[#202923] border-t border-[#E9E2D9]"
       role="contentinfo"
       aria-label="Site Footer"
     >
-      <div className="py-16 sm:py-20 lg:py-24">
+      <div className="py-14 sm:py-18 lg:py-20">
         <Container size="default">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 lg:gap-8">
-            {/* Column 1 & 2: Brand Area (lg:col-span-2) */}
-            <div className="col-span-2 md:col-span-3 lg:col-span-2 flex flex-col items-start gap-4 pr-0 lg:pr-6">
-              <Logo variant="light" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+            {/* Column 1: Brand & Descriptor (lg:col-span-4) */}
+            <div className="lg:col-span-4 flex flex-col items-start gap-4 pr-0 lg:pr-6">
+              <Logo />
 
-              <p className="font-sans text-xs sm:text-sm text-white/75 leading-relaxed max-w-sm mt-1">
-                Clinically proven, doctor-led aesthetic treatments for natural, lasting results. Visit our luxurious aesthetic spaces.
+              <p className="font-sans text-xs sm:text-sm text-[#52625A] leading-relaxed max-w-sm mt-1">
+                Clinically proven, doctor-led aesthetic treatments for natural, lasting results. Realise your aesthetic vision.
               </p>
 
-              {/* Clinic Accreditation Pill */}
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 backdrop-blur-xs mt-1">
-                <ShieldCheck className="h-3.5 w-3.5 text-[#C4A17B]" aria-hidden="true" />
-                <span className="font-sans text-[11px] font-medium text-white/90">
-                  Doctor-Supervised Clinical Protocols
-                </span>
-              </div>
+              <p className="font-sans text-[11px] text-[#64796C] leading-relaxed">
+                Consultations at our Ambattur, Chennai clinic are by prior appointment.
+              </p>
             </div>
 
-            {/* Column 3: Treatments */}
-            <div>
-              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#C4A17B] mb-4 sm:mb-5">
+            {/* Column 2: Treatments (lg:col-span-2) */}
+            <div className="lg:col-span-2">
+              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#202923] mb-4 sm:mb-5">
                 Treatments
               </span>
-              <ul className="space-y-3 font-sans text-xs sm:text-sm text-white/75">
+              <ul className="space-y-2.5 font-sans text-xs sm:text-sm text-[#52625A]">
                 {treatments.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="hover:text-white transition-colors duration-200"
+                      className="hover:text-[#253C34] transition-colors duration-200"
                     >
                       {item.label}
                     </Link>
@@ -90,17 +82,17 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 4: Clinics */}
-            <div>
-              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#C4A17B] mb-4 sm:mb-5">
+            {/* Column 3: Clinics (lg:col-span-2) */}
+            <div className="lg:col-span-2">
+              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#202923] mb-4 sm:mb-5">
                 Clinics
               </span>
-              <ul className="space-y-3 font-sans text-xs sm:text-sm text-white/75">
+              <ul className="space-y-2.5 font-sans text-xs sm:text-sm text-[#52625A]">
                 {clinics.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="hover:text-white transition-colors duration-200"
+                      className="hover:text-[#253C34] transition-colors duration-200"
                     >
                       {item.label}
                     </Link>
@@ -109,17 +101,17 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 5: Resources */}
-            <div>
-              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#C4A17B] mb-4 sm:mb-5">
+            {/* Column 4: Resources (lg:col-span-2) */}
+            <div className="lg:col-span-2">
+              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#202923] mb-4 sm:mb-5">
                 Resources
               </span>
-              <ul className="space-y-3 font-sans text-xs sm:text-sm text-white/75">
+              <ul className="space-y-2.5 font-sans text-xs sm:text-sm text-[#52625A]">
                 {resources.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="hover:text-white transition-colors duration-200"
+                      className="hover:text-[#253C34] transition-colors duration-200"
                     >
                       {item.label}
                     </Link>
@@ -128,56 +120,50 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 6: Legal & Visit Us */}
-            <div className="col-span-2 sm:col-span-1">
-              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#C4A17B] mb-4 sm:mb-5">
-                Legal
-              </span>
-              <ul className="space-y-2.5 font-sans text-xs sm:text-sm text-white/75 mb-6">
-                {legal.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="hover:text-white transition-colors duration-200"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            {/* Column 5: Legal & Visit Us (lg:col-span-2) */}
+            <div className="lg:col-span-2 flex flex-col gap-6">
+              <div>
+                <span className="block font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#202923] mb-3">
+                  Legal
+                </span>
+                <ul className="space-y-2 font-sans text-xs text-[#52625A]">
+                  {legal.map((item) => (
+                    <li key={item.label}>
+                      <Link
+                        href={item.href}
+                        className="hover:text-[#253C34] transition-colors duration-200"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#C4A17B] mb-3">
-                Visit Us
-              </span>
-              <div className="space-y-2 font-sans text-xs text-white/75">
-                <div className="flex items-start gap-2">
-                  <MapPin className="h-3.5 w-3.5 text-[#C4A17B] shrink-0 mt-0.5" />
-                  <span className="leading-snug">Ambattur, Chennai / Orchard, Singapore</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="h-3.5 w-3.5 text-[#C4A17B] shrink-0" />
-                  <a href="tel:+914426580000" className="hover:text-white transition-colors">
-                    +91 44 2658 0000
+              <div>
+                <span className="block font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#202923] mb-2">
+                  Visit Us
+                </span>
+                <p className="font-sans text-xs text-[#52625A] leading-relaxed">
+                  Ambattur OT, Chennai, India<br />
+                  <a href="tel:+919176333111" className="hover:text-[#253C34] transition-colors">
+                    +91 91763 33111
+                  </a><br />
+                  <a href="mailto:hello@virtueaestheticclinics.com" className="hover:text-[#253C34] transition-colors">
+                    hello@virtueaestheticclinics.com
                   </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="h-3.5 w-3.5 text-[#C4A17B] shrink-0" />
-                  <a
-                    href="mailto:care@virtueaestheticclinics.com"
-                    className="hover:text-white transition-colors"
-                  >
-                    care@virtueaestheticclinics.com
-                  </a>
-                </div>
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Bottom Copyright & Verification Line */}
-          <div className="mt-14 sm:mt-18 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-white/60">
-            <p>© {currentYear} Virtue Aesthetic Clinics. All rights reserved.</p>
-            <p className="text-[11px] text-white/45">
-              Doctor-led aesthetic medicine • Ambattur, Chennai &amp; Singapore
+          {/* Bottom Divider & Copyright */}
+          <div className="mt-12 sm:mt-16 pt-6 border-t border-[#E9E2D9] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#52625A]">
+            <p className="font-sans">
+              &copy; {currentYear} Virtue Aesthetic Clinics. All rights reserved.
+            </p>
+            <p className="font-sans text-[11px] text-[#64796C]">
+              Medical aesthetics &amp; clinical dermatology. Prior appointment required.
             </p>
           </div>
         </Container>

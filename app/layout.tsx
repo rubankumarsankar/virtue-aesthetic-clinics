@@ -1,3 +1,4 @@
+import * as React from "react";
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Manrope } from "next/font/google";
 import { Header, Footer } from "@components/layout";
@@ -104,7 +105,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <Header />
+        <React.Suspense fallback={<div className="h-16 lg:h-[80px] bg-[#FAF8F5]" />}>
+          <Header />
+        </React.Suspense>
         <div className="flex-1">
           {children}
         </div>

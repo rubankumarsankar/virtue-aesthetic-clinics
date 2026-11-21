@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {
   HeroSection,
-  TrustSection,
+  FeaturedInStrip,
   TreatmentsSection,
   VirtueDifferenceSection,
   ConcernsSection,
@@ -13,58 +13,129 @@ import {
   CtaBannerSection,
 } from "@components/home";
 
+/**
+ * Metadata for Virtue Aesthetic Clinics Homepage
+ */
 export const metadata: Metadata = {
-  title: "Virtue Aesthetic Clinics | Advanced Dermatology & Aesthetics in Ambattur, Chennai",
+  title: "Virtue Aesthetic Clinics | Advanced Aesthetic Treatments",
   description:
-    "Doctor-led aesthetic clinic in Ambattur, Chennai. Advanced clinical dermatology, US-FDA cleared laser treatments, and personalized skin rejuvenation by Dr. Deepak Raj & Dr. Jaitilak M A.",
+    "Clinically proven, doctor-led aesthetic treatments that enhance your natural beauty with precision and care. Explore treatments and book a consultation.",
+  alternates: {
+    canonical: "https://virtueaestheticclinics.com/",
+  },
   openGraph: {
-    title: "Virtue Aesthetic Clinics | Ambattur, Chennai",
+    title: "Virtue Aesthetic Clinics | Advanced Aesthetic Treatments",
     description:
-      "Advanced aesthetic treatments for natural, lasting results. Physician-guided care in a luxury clinical environment.",
-    url: "/",
+      "Clinically proven, doctor-led aesthetic treatments that enhance your natural beauty with precision and care.",
+    url: "https://virtueaestheticclinics.com/",
+    siteName: "Virtue Aesthetic Clinics",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero/hero-radiant-portrait.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Virtue Aesthetic Clinics clinic experience",
+      },
+    ],
   },
 };
 
 /**
- * Homepage Route
- * Assembles the complete high-fidelity 11-section Virtue Aesthetic Clinics experience.
- * All sections are strictly typed, server-first, and responsive.
+ * Structured Data (JSON-LD)
+ */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["MedicalClinic", "LocalBusiness"],
+      "@id": "https://virtueaestheticclinics.com/#clinic",
+      name: "Virtue Aesthetic Clinics",
+      image: "https://virtueaestheticclinics.com/images/hero/hero-radiant-portrait.jpg",
+      telephone: "+91-91763-33111",
+      url: "https://virtueaestheticclinics.com/",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "1st Floor, Above Karur Vysya Bank, MTH Road, Ambattur OT",
+        addressLocality: "Ambattur",
+        addressRegion: "Chennai, Tamil Nadu",
+        postalCode: "600053",
+        addressCountry: "IN",
+      },
+      medicalSpecialty: ["Dermatology", "PlasticSurgery"],
+      priceRange: "$$",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://virtueaestheticclinics.com/#website",
+      url: "https://virtueaestheticclinics.com/",
+      name: "Virtue Aesthetic Clinics",
+      publisher: {
+        "@id": "https://virtueaestheticclinics.com/#clinic",
+      },
+    },
+  ],
+};
+
+/**
+ * Homepage Route (Approved UI Design Recreation)
+ * Strictly matches the desktop & mobile mockup section ordering and layout proportions:
+ * 1. HeroSection (Display headline with gold italic emphasis, dual CTAs, portrait, golden arc, floating video card)
+ * 2. FeaturedInStrip (VOGUE, Forbes, ELLE, Harper's BAZAAR, GQ)
+ * 3. TreatmentsSection (Personalised Solutions for Your Skin, Hair and Body - 4 photographic cards)
+ * 4. VirtueDifferenceSection (Clinic interior reception photography + botanical leaf illustration + 4 line feature icons)
+ * 5. ConcernsSection (Find Your Care: What Would You Like Help With? - 6 cards with minimal line icons)
+ * 6. DoctorsSection (Meet Our Dermatologists - 2 horizontal doctor cards)
+ * 7. PatientJourneySection (A Simple, Supportive Journey - 4 numbered steps)
+ * 8. TestimonialsSection (Patient Stories - Editorial card with quote and < 1 / 3 > controls)
+ * 9. BlogSection (Aesthetic & Skin Health Insights - 3 editorial cards)
+ * 10. FaqSection (Frequently Asked Questions - Accordion with thin dividers)
+ * 11. CtaBannerSection (Let's Begin With a Conversation - Forest green banner)
  */
 export default function HomePage() {
   return (
-    <main id="main-content" className="flex flex-col w-full overflow-x-hidden">
-      {/* 01. Hero */}
-      <HeroSection />
+    <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
-      {/* 02. Trust & Credibility */}
-      <TrustSection />
+      <main id="main-content" className="flex flex-col w-full overflow-x-hidden">
+        {/* A. Hero Section */}
+        <HeroSection />
 
-      {/* 03. Explore Our Treatments */}
-      <TreatmentsSection />
+        {/* B. As Featured In Strip */}
+        <FeaturedInStrip />
 
-      {/* 04. The Virtue Difference */}
-      <VirtueDifferenceSection />
+        {/* C. Explore Our Treatments */}
+        <TreatmentsSection />
 
-      {/* 05. Find Your Care (Concerns) */}
-      <ConcernsSection />
+        {/* D. The Virtue Difference */}
+        <VirtueDifferenceSection />
 
-      {/* 06. Meet Our Dermatologists */}
-      <DoctorsSection />
+        {/* E. Find Your Care */}
+        <ConcernsSection />
 
-      {/* 07. Your Care, Step by Step */}
-      <PatientJourneySection />
+        {/* F. Meet Our Dermatologists */}
+        <DoctorsSection />
 
-      {/* 08. Patient Stories */}
-      <TestimonialsSection />
+        {/* G. Your Care, Step by Step */}
+        <PatientJourneySection />
 
-      {/* 09. Aesthetic & Skin Health Insights */}
-      <BlogSection />
+        {/* H. Patient Stories */}
+        <TestimonialsSection />
 
-      {/* 10. Frequently Asked Questions */}
-      <FaqSection />
+        {/* I. Aesthetic & Skin Health Insights */}
+        <BlogSection />
 
-      {/* 11. Consultation CTA Banner */}
-      <CtaBannerSection />
-    </main>
+        {/* J. Frequently Asked Questions */}
+        <FaqSection />
+
+        {/* K. Consultation Banner */}
+        <CtaBannerSection />
+      </main>
+    </>
   );
 }

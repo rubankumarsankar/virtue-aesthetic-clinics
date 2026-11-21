@@ -35,7 +35,8 @@ export type TreatmentCategory =
   | "skin"
   | "laser"
   | "injectables"
-  | "wellness";
+  | "wellness"
+  | "hair";
 
 export interface Treatment {
   id: string;
