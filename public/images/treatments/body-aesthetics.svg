@@ -1,9 +1,0 @@
-<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="600" fill="#FAF8F5" />
-  <rect x="250" y="160" width="300" height="280" rx="24" fill="#EDF2ED" stroke="#E9E2D9" stroke-width="2" />
-  <circle cx="400" cy="270" r="70" fill="#FFFFFF" stroke="#C4A17B" stroke-width="1.5" />
-  <path d="M370 270 Q400 240 430 270 Q400 300 370 270 Z" fill="#253C34" fill-opacity="0.2" />
-  <text x="400" y="500" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#253C34" letter-spacing="3">
-    NON-SURGICAL BODY CONTOURING
-  </text>
-</svg>
