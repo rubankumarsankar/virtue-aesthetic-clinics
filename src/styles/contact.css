@@ -33,3 +33,6 @@ a.cc:hover .cc-arrow{background:#173532;color:#fff;transform:rotate(-45deg)}
   .map-frame{min-height:360px}
   .g2>[style*="sticky"]{position:static !important}
 }
+@media (max-width:640px){
+  .cc{min-height:0;gap:20px}
+}

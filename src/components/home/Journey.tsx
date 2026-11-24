@@ -51,7 +51,7 @@ export default function Journey() {
         <div
           key={step}
           id="journey-panel"
-          className="panel g2"
+          className="panel g2 card-pad"
           role="tabpanel"
           aria-labelledby={`journey-tab-${step}`}
           style={{
@@ -64,7 +64,7 @@ export default function Journey() {
             padding: 48,
           }}
         >
-          <span style={{ font: "600 160px/0.8 var(--display)", color: "#316863", letterSpacing: "-.06em" }}>0{step + 1}</span>
+          <span className="jn-num" style={{ font: "600 160px/0.8 var(--display)", color: "#316863", letterSpacing: "-.06em" }}>0{step + 1}</span>
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <h3 style={{ fontSize: 36, fontWeight: 600 }}>{current.title}</h3>
             <p style={{ fontSize: 18, lineHeight: 1.65, color: "#4A5F5C" }}>{current.text}</p>

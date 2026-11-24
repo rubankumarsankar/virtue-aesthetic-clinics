@@ -117,25 +117,73 @@ p{margin:0}
 .bigm span.s{color:#D9B98A;-webkit-text-stroke:0}
 .foot a{color:#C9DBD7;text-decoration:none;font-size:14px;transition:color .25s}.foot a:hover{color:#fff}
 .mbar{display:none}
+/* ---------- Tablet & below (≤960px) ---------- */
 @media (max-width:960px){
 .navpill,.hcta,.topr{display:none !important}
 .burger{display:inline-flex}
-.g2,.g3,.g4,.hero-imgs,.conc-g,.foot-g,.loc-g,.doc-g{grid-template-columns:minmax(0,1fr) !important}
-.h1{font-size:46px !important}
-.h2{font-size:36px !important}
+.g2,.g3,.conc-g,.loc-g{grid-template-columns:minmax(0,1fr) !important}
+/* 4-up and 2-up grids drop to 2 columns on tablet */
+.g4,.foot-g,.doc-g{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+/* fluid headings: ~34px on a 390px phone, capped at 64px / 44px on tablet */
+.h1{font-size:clamp(32px,8.6vw,64px) !important}
+.h2{font-size:clamp(30px,7vw,44px) !important}
 .sec{padding-block:72px !important}
+
+/* hero images stay 3-up on tablet, just shorter */
+.hero-imgs>div{height:300px !important;margin-top:48px !important}
+.hero-imgs>div:nth-child(2){height:380px !important;margin-top:0 !important}
+
+/* category gallery: stacked cards, natural height, single title */
 .gal{flex-direction:column;height:auto}
-.gc{min-height:220px}
-.gc .gt{writing-mode:horizontal-tb;transform:none}
+.gc{flex:none;min-height:0;gap:28px}
+.gc .gt{display:none}
 .gc .gx{opacity:1;transform:none}
-.wrow,.trow,.faq{grid-template-columns:minmax(0,1fr) !important;gap:12px}
+
+.wrow,.faq{grid-template-columns:minmax(0,1fr) !important;gap:12px}
+/* treatment rows: thumbnail beside title, description below */
+.trow{grid-template-columns:110px minmax(0,1fr) !important;gap:14px 18px;align-items:center}
+.trow>p{grid-column:1 / -1}
 .trow .ra{display:none}
+
 .steps{flex-direction:column}
-.hero-imgs>div{height:320px !important;margin-top:0 !important}
+/* parallax would slide the portrait over the caption on stacked layouts */
+.par{animation:none !important}
+.doc-g .img{height:440px !important}
+
 .bigm span{font-size:80px}
 .mbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}
+/* keep the footer clear of the floating booking bar */
+.foot{padding-bottom:110px !important}
+}
+
+/* ---------- Phone (≤640px) ---------- */
+@media (max-width:640px){
+.g4,.foot-g,.doc-g{grid-template-columns:minmax(0,1fr) !important}
+/* hero: large centre photo, two arches side by side beneath */
+.hero-imgs{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px !important}
+.hero-imgs>div:nth-child(2){grid-column:1 / -1;order:-1;height:340px !important;border-radius:28px !important}
+.hero-imgs>div{height:230px !important;margin-top:0 !important}
+.doc-g .img{height:400px !important}
+.trow{grid-template-columns:88px minmax(0,1fr) !important}
+.wrap{padding:0 20px}
+.bigm span{font-size:64px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 
 /* virtue design */
 .navpill a.nl.on{background:#173532;color:#fff}
+
+
+/* anchor jumps land below the sticky header */
+html{scroll-padding-top:100px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+@media (max-width:640px){
+.card-pad{padding:32px 24px !important}
+.jn-num{font-size:96px !important}
+.trow h3{font-size:22px !important}
+}
+ 
+/* room for italic overhang inside the word-reveal mask (no layout shift) */
+.w{padding-right:.12em;margin-right:-.12em}
+ 

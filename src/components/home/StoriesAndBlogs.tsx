@@ -19,7 +19,7 @@ export default function StoriesAndBlogs() {
 function PatientStoriesCard() {
   return (
     <div
-      className="rv"
+      className="rv card-pad"
       style={{
         background: "#173532",
         color: "#fff",
@@ -69,7 +69,7 @@ function BlogsCard() {
   return (
     <div
       id="blogs"
-      className="rv"
+      className="rv card-pad"
       style={{ background: "#EEF4F2", borderRadius: 32, padding: 48, display: "flex", flexDirection: "column", gap: 20 }}
     >
       <span className="kick">Learn · Phase 2</span>
