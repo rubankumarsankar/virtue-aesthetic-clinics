@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ComponentType } from "react";
 import BookButton from "@/components/booking/BookButton";
+import SiteChrome from "@/components/layout/SiteChrome";
 import Button from "@/components/ui/Button";
 import Photo from "@/components/ui/Photo";
 import { ArrowUpRight, PhoneIcon, QuestionIcon, SparkleIcon, UsersIcon } from "@/components/ui/Icons";
 
 export const metadata: Metadata = {
   title: "Page not found",
+  robots: { index: false, follow: true },
 };
 
 type Destination = { href: string; title: string; text: string; icon: ComponentType<{ size?: number }> };
@@ -21,6 +23,7 @@ const destinations: Destination[] = [
 
 export default function NotFound() {
   return (
+    <SiteChrome>
     <section className="nf">
       <div className="nf-bg" aria-hidden="true" />
       <div className="wrap" style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 28 }}>
@@ -73,5 +76,6 @@ export default function NotFound() {
         </nav>
       </div>
     </section>
+    </SiteChrome>
   );
 }

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { categories, clinicMap, quickLinks } from "@/data/home";
+import { categories, quickLinks } from "@/data/home";
+import { clinic } from "@/data/site";
 import SmartLink from "@/components/ui/SmartLink";
 
 // Static on purpose: `new Date()` in a prerendered Server Component breaks Cache Components.
@@ -47,16 +48,22 @@ export default function Footer() {
             ))}
           </div>
 
-          <div style={columnStyle}>
+          <address style={{ ...columnStyle, fontStyle: "normal" }}>
             <h4 style={headingStyle}>Contact</h4>
-            <span style={infoStyle}>[Verified clinic address]</span>
-            <span style={infoStyle}>[Phone number]</span>
-            <span style={infoStyle}>[WhatsApp number]</span>
-            <span style={infoStyle}>[Opening hours]</span>
-            <a href={clinicMap.directionsUrl} target="_blank" rel="noopener noreferrer">
+            <span style={infoStyle}>{clinic.address}</span>
+            {clinic.phone.href ? <a href={clinic.phone.href}>{clinic.phone.display}</a> : <span style={infoStyle}>{clinic.phone.display}</span>}
+            {clinic.whatsapp.href ? (
+              <a href={clinic.whatsapp.href} target="_blank" rel="noopener noreferrer">
+                WhatsApp {clinic.whatsapp.display}
+              </a>
+            ) : (
+              <span style={infoStyle}>{clinic.whatsapp.display}</span>
+            )}
+            <span style={infoStyle}>{clinic.hours}</span>
+            <a href={clinic.map.directionsUrl} target="_blank" rel="noopener noreferrer">
               Google Maps directions
             </a>
-          </div>
+          </address>
         </div>
 
         <div

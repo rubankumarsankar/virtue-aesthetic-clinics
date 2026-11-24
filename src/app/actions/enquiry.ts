@@ -1,13 +1,14 @@
 "use server";
 
 import { parseEnquiry, type Enquiry, type EnquiryState } from "@/lib/enquiry";
+import { insertEnquiry } from "@/lib/enquiries";
 
 /**
- * Hand-off point for a validated enquiry.
- * TODO: connect to the clinic's delivery channel (email, CRM, WhatsApp Business API, etc.).
+ * Persists a validated enquiry to MySQL (visible in /admin/bookings and /admin/enquiries).
+ * Add email / WhatsApp notifications here later if wanted.
  */
 async function deliverEnquiry(enquiry: Enquiry): Promise<void> {
-  console.info("[enquiry] received", { ...enquiry, receivedAt: new Date().toISOString() });
+  await insertEnquiry(enquiry);
 }
 
 export async function submitEnquiry(_prev: EnquiryState, formData: FormData): Promise<EnquiryState> {
