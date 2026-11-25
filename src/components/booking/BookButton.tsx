@@ -10,6 +10,7 @@ type BookButtonProps = {
   iconStyle?: CSSProperties;
   iconSize?: number;
   onClick?: () => void;
+  trackLocation?: string;
 };
 
 /** Pill button (same look as <Button>) that opens the booking modal. */
@@ -21,9 +22,10 @@ export default function BookButton({
   iconStyle,
   iconSize = 16,
   onClick,
+  trackLocation,
 }: BookButtonProps) {
   return (
-    <BookTrigger className={["btn", variant, className].filter(Boolean).join(" ")} style={style} onClick={onClick}>
+    <BookTrigger className={["btn", variant, className].filter(Boolean).join(" ")} style={style} onClick={onClick} trackLocation={trackLocation}>
       {children}{" "}
       <span className="bi" style={iconStyle}>
         <ArrowRight size={iconSize} />

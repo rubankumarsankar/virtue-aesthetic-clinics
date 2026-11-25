@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { clinic } from "@/data/site";
+import { clinic, USING_DUMMY_CONTACTS } from "@/data/site";
 import { categories, doctors } from "@/data/home";
 import type { PublicService } from "@/lib/services";
 
@@ -36,7 +36,7 @@ export const siteConfig = {
 export const absoluteUrl = (path = "/") => new URL(path, `${siteConfig.url}/`).toString();
 
 /** Routes that exist. Add new pages here (and in sitemap.ts) as they are built. */
-export const liveRoutes = new Set(["/", "/contact"]);
+export const liveRoutes = new Set(["/", "/contact", "/treatments", "/treatments/skin"]);
 const normalise = (path: string) => (path.length > 1 ? path.replace(/\/+$/, "") : path);
 /** Absolute URL only if the page exists — avoids pointing crawlers at 404s. */
 export const liveUrl = (path: string) => (liveRoutes.has(normalise(path)) ? absoluteUrl(normalise(path)) : undefined);
@@ -68,14 +68,15 @@ export function clinicSchema(services: readonly PublicService[]): Thing {
     description: siteConfig.description,
     medicalSpecialty: "Dermatology",
     isAcceptingNewPatients: true,
-    telephone: clinic.phone.href?.replace(/^tel:/, ""),
-    email: clinic.email,
+    // Dummy contacts are never published as structured data (see USING_DUMMY_CONTACTS).
+    telephone: USING_DUMMY_CONTACTS ? undefined : clinic.phone.href?.replace(/^tel:/, ""),
+    email: USING_DUMMY_CONTACTS ? undefined : clinic.emailContact.display,
     address: compact({
       "@type": "PostalAddress",
-      streetAddress: a.streetAddress,
+      streetAddress: USING_DUMMY_CONTACTS ? undefined : a.streetAddress,
       addressLocality: `${a.locality}, ${a.city}`,
       addressRegion: a.region,
-      postalCode: a.postalCode,
+      postalCode: USING_DUMMY_CONTACTS ? undefined : a.postalCode,
       addressCountry: a.country,
     }),
     geo: clinic.geo && { "@type": "GeoCoordinates", latitude: clinic.geo.latitude, longitude: clinic.geo.longitude },
@@ -84,7 +85,7 @@ export function clinicSchema(services: readonly PublicService[]): Thing {
       { "@type": "Place", name: `${a.locality}, ${a.city}` },
       { "@type": "City", name: a.city },
     ],
-    openingHoursSpecification: clinic.openingHours.map((h) => ({
+    openingHoursSpecification: (USING_DUMMY_CONTACTS ? [] : clinic.openingHours).map((h) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: h.days.map((d) => `https://schema.org/${d}`),
       opens: h.opens,

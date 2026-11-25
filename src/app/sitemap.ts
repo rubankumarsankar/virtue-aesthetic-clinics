@@ -24,5 +24,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: absoluteUrl("/treatments"),
+      lastModified: LAST_UPDATED,
+      changeFrequency: "monthly",
+      priority: 0.9,
+      images: [absoluteUrl("/images/treatments_hub/treatments-hero.jpg")],
+    },
+    {
+      url: absoluteUrl("/treatments/skin"),
+      lastModified: LAST_UPDATED,
+      changeFrequency: "monthly",
+      priority: 0.85,
+      images: [absoluteUrl("/images/skin_dermatology/skin-hero.jpg")],
+    },
   ];
 }

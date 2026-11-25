@@ -11,24 +11,40 @@ export type OpeningHours = {
   closes: string; // "20:00"
 };
 
-const mapQuery = encodeURIComponent("Virtue Aesthetic Clinic, Ambattur, Chennai");
+/**
+ * DUMMY contact details, address and opening hours for development/preview. While `true`, these are shown on the pages
+ * but deliberately LEFT OUT of structured data (JSON-LD) and /llms.txt, so search engines and
+ * AI assistants never repeat a fake number. Replace the values below with the real ones and
+ * set this to `false` before going live.
+ */
+export const USING_DUMMY_CONTACTS = true;
 
-// e.g. { display: "+91 98xxx xxxxx", href: "tel:+9198xxxxxxxx" }
-const phone: ContactPoint = { display: "[Insert verified contact number]" };
-// e.g. { display: "+91 98xxx xxxxx", href: "https://wa.me/9198xxxxxxxx" }
-const whatsapp: ContactPoint = { display: "[Insert verified WhatsApp number]" };
+const phone: ContactPoint = { display: "+91 90000 00000", href: "tel:+919000000000" };
+const whatsapp: ContactPoint = { display: "+91 90000 00001", href: "https://wa.me/919000000001" };
+// `.example` is a reserved domain (RFC 2606) — it can never deliver to a real inbox.
+const email: ContactPoint = { display: "hello@virtueclinic.example", href: "mailto:hello@virtueclinic.example" };
+
+/** Full postal address shown on the site (one place to change it). */
+const address = "No. 12, Example Street, Ambattur, Chennai, Tamil Nadu 600053";
+
+// A dummy street cannot be pinned on a real map, so until real details are set the map shows the Ambattur area.
+const mapQuery = encodeURIComponent(
+  USING_DUMMY_CONTACTS ? "Ambattur, Chennai, Tamil Nadu 600053" : `Virtue Aesthetic Clinic, ${address}`,
+);
+const mapZoom = USING_DUMMY_CONTACTS ? 14 : 17;
 
 export const clinic = {
   name: "Virtue Aesthetic Clinic",
   phone,
   whatsapp,
-  address: "[Insert verified full clinic address], Ambattur, Chennai",
-  hours: "[Insert confirmed clinic timings]",
+  emailContact: email,
+  address,
+  hours: "Mon – Sat: 10:00 AM – 8:00 PM · Sunday: By appointment",
 
   /** Structured address parts — add streetAddress / postalCode once verified. */
   postalAddress: {
-    streetAddress: undefined as string | undefined,
-    postalCode: undefined as string | undefined,
+    streetAddress: "No. 12, Example Street" as string | undefined,
+    postalCode: "600053" as string | undefined,
     locality: "Ambattur",
     city: "Chennai",
     region: "Tamil Nadu",
@@ -38,14 +54,14 @@ export const clinic = {
   /** Exact map pin, e.g. { latitude: 13.11, longitude: 80.15 } — leave undefined until verified. */
   geo: undefined as { latitude: number; longitude: number } | undefined,
   /** Verified opening hours for search results, e.g. [{ days: ["Monday", ...], opens: "10:00", closes: "20:00" }]. */
-  openingHours: [] as OpeningHours[],
+  openingHours: [
+    { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "10:00", closes: "20:00" },
+  ] as OpeningHours[],
   /** Official profiles (Google Business Profile, Instagram, Facebook…) — strengthens entity recognition. */
   sameAs: [] as string[],
-  email: undefined as string | undefined,
 
-  /** Swap the query for the verified full address once confirmed. */
   map: {
-    embedUrl: `https://www.google.com/maps?q=${mapQuery}&output=embed`,
+    embedUrl: `https://maps.google.com/maps?q=${mapQuery}&z=${mapZoom}&ie=UTF8&iwloc=&output=embed`,
     directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`,
   },
 };

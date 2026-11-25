@@ -20,7 +20,7 @@ export default function Footer() {
             <Image
               src="/images/logo-footer.png"
               alt="Virtue Aesthetic Clinic"
-              width={220}
+              width={104}
               height={60}
               style={{ height: 60, width: "auto", alignSelf: "flex-start" }}
             />
@@ -59,6 +59,7 @@ export default function Footer() {
             ) : (
               <span style={infoStyle}>{clinic.whatsapp.display}</span>
             )}
+            <a href={clinic.emailContact.href}>{clinic.emailContact.display}</a>
             <span style={infoStyle}>{clinic.hours}</span>
             <a href={clinic.map.directionsUrl} target="_blank" rel="noopener noreferrer">
               Google Maps directions

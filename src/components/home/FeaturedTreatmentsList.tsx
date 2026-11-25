@@ -71,7 +71,7 @@ export default function FeaturedTreatmentsList({ services }: { services: PublicS
         </div>
 
         <div className="rv">
-          <Button href="/treatments/">View All Treatments</Button>
+          <Button href="/treatments">View All Treatments</Button>
         </div>
       </div>
     </section>

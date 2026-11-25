@@ -8,6 +8,8 @@ import "@/styles/forms.css";
 import "@/styles/booking.css";
 import "@/styles/contact.css";
 import "@/styles/not-found.css";
+import "@/styles/header.css";
+import "@/styles/treatments.css";
 import "@/styles/admin.css";
 
 const display = Bricolage_Grotesque({

@@ -37,6 +37,14 @@ export default function Directions() {
               </span>
               <span>{clinic.name}</span>
               <span>{clinic.address}</span>
+              <span style={{ paddingTop: 8, display: "flex", flexDirection: "column", gap: 2, fontSize: 14, color: "#C9DBD7" }}>
+                <a href={clinic.phone.href} style={{ color: "inherit", textDecoration: "none" }}>
+                  {clinic.phone.display}
+                </a>
+                <a href={clinic.emailContact.href} style={{ color: "inherit", textDecoration: "none" }}>
+                  {clinic.emailContact.display}
+                </a>
+              </span>
             </address>
           </div>
         </div>

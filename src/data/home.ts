@@ -45,7 +45,7 @@ export type Doctor = {
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/#about" },
-  { label: "Treatments", href: "/#treatments" },
+  { label: "Treatments", href: "/treatments" },
   { label: "Our Doctors", href: "/#doctors" },
   { label: "Patient Stories", href: "/#stories" },
   { label: "Blogs", href: "/#blogs" },
@@ -57,7 +57,7 @@ export const categories: Category[] = [
   { n: 2, title: "Hair & Scalp", text: "Explore treatment options for hair fall, thinning, scalp concerns and hair restoration.", cta: "Explore Hair Treatments", link: "/treatments/hair/", bg: "#316863" },
   { n: 3, title: "Laser & Energy-Based Treatments", text: "Learn about available laser and energy-based procedures for selected skin and aesthetic concerns.", cta: "Explore Laser Treatments", link: "/treatments/laser/", bg: "#3F7A73" },
   { n: 4, title: "Skin Rejuvenation & Aesthetics", text: "Discover facial, peel and other skin-rejuvenation options based on your individual concerns.", cta: "Explore Skin Rejuvenation", link: "/treatments/skin-rejuvenation/", bg: "#24504B" },
-  { n: 5, title: "Body Aesthetics", text: "Understand the available body-contouring service and discuss suitability and realistic expectations during consultation.", cta: "Explore Body Contouring", link: "/treatments/body-aesthetics/body-contouring/", bg: "#26524E" },
+  { n: 5, title: "Body Aesthetics", text: "Understand the available body-contouring service and discuss suitability and realistic expectations during consultation.", cta: "Explore Body Contouring", link: "/treatments/body-contouring", bg: "#26524E" },
 ];
 
 export const pillars = [
@@ -73,7 +73,7 @@ export const concerns: Concern[] = [
   { title: "Hair Fall & Hair Thinning", text: "Learn about assessment-led options for hair loss, thinning and hair restoration.", cta: "Explore Hair Treatments", link: "/treatments/hair/", bg: "linear-gradient(160deg,#B9D3CD,#5A8F87)", image: { src: "/concerns/03-hair-fall-and-hair-thinning.png", alt: "Hair thinning and hair fall concern" } },
   { title: "Skin Ageing & Rejuvenation", text: "Explore aesthetic options that may address individual skin rejuvenation concerns.", cta: "Explore Skin Rejuvenation", link: "/treatments/skin-rejuvenation/", bg: "linear-gradient(160deg,#EEF4F2,#D9B98A)", image: { src: "/concerns/04-skin-ageing-and-rejuvenation.png", alt: "Mature skin with a natural, rejuvenated glow" } },
   { title: "Laser & Skin Procedures", text: "Discover available laser and energy-based procedures and understand their suitability.", cta: "Explore Laser Treatments", link: "/treatments/laser/", bg: "linear-gradient(160deg,#D5E6E2,#8DB8B0)", image: { src: "/concerns/05-laser-and-skin-procedures.png", alt: "Laser skin procedure in a clinical setting" } },
-  { title: "Body Contouring", text: "Learn about available body-contouring options and the importance of individual assessment.", cta: "Explore Body Contouring", link: "/treatments/body-aesthetics/body-contouring/", bg: "linear-gradient(160deg,#F1E4D4,#D2A98F)", image: { src: "/concerns/06-body-contouring.png", alt: "Body contouring consultation" } },
+  { title: "Body Contouring", text: "Learn about available body-contouring options and the importance of individual assessment.", cta: "Explore Body Contouring", link: "/treatments/body-contouring", bg: "linear-gradient(160deg,#F1E4D4,#D2A98F)", image: { src: "/concerns/06-body-contouring.png", alt: "Body contouring consultation" } },
 ];
 
 export const whys = [
@@ -133,11 +133,12 @@ export const treatmentPageHeroes = {
   prp: { src: "/additional-treatments/prp-treatment.png", alt: "Capped sample tubes on a teal tray" },
 } satisfies Record<string, ImageRef>;
 
-export const contactDetails = [
-  { label: "Address", value: "[Insert verified full clinic address]" },
-  { label: "Phone", value: "[Insert verified contact number]" },
-  { label: "WhatsApp", value: "[Insert verified WhatsApp number]" },
-  { label: "Opening hours", value: "[Insert confirmed clinic timings]" },
+export const contactDetails: { label: string; value: string; href?: string; wide?: boolean }[] = [
+  { label: "Phone", value: clinic.phone.display, href: clinic.phone.href },
+  { label: "WhatsApp", value: clinic.whatsapp.display, href: clinic.whatsapp.href },
+  { label: "Email", value: clinic.emailContact.display, href: clinic.emailContact.href },
+  { label: "Opening hours", value: clinic.hours },
+  { label: "Address", value: clinic.address, wide: true },
 ];
 
 export const quickLinks = [

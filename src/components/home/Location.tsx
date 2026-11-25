@@ -19,12 +19,30 @@ export default function Location() {
               {contactDetails.map((c) => (
                 <div
                   key={c.label}
-                  style={{ background: "#EEF4F2", borderRadius: 20, padding: 20, display: "flex", flexDirection: "column", gap: 6 }}
+                  style={{
+                    background: "#EEF4F2",
+                    borderRadius: 20,
+                    padding: 20,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 6,
+                    gridColumn: c.wide ? "1 / -1" : undefined,
+                  }}
                 >
                   <span className="kick" style={{ fontSize: 11 }}>
                     {c.label}
                   </span>
-                  <span style={{ fontSize: 15, fontWeight: 500, lineHeight: 1.4 }}>{c.value}</span>
+                  {c.href ? (
+                    <a
+                      href={c.href}
+                      style={{ fontSize: 15, fontWeight: 500, lineHeight: 1.4, textDecoration: "none", overflowWrap: "anywhere" }}
+                      {...(c.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                    >
+                      {c.value}
+                    </a>
+                  ) : (
+                    <span style={{ fontSize: 15, fontWeight: 500, lineHeight: 1.4 }}>{c.value}</span>
+                  )}
                 </div>
               ))}
             </div>

@@ -36,7 +36,7 @@ export default function Hero() {
         </p>
         <div className="f2" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12 }}>
           <BookButton />
-          <Button href="/treatments/" variant="b2">
+          <Button href="/treatments" variant="b2">
             Explore Treatments
           </Button>
         </div>

@@ -2,6 +2,7 @@ import "server-only";
 import { createHmac, scrypt as scryptCb, timingSafeEqual } from "node:crypto";
 import { promisify } from "node:util";
 import { cookies } from "next/headers";
+import { connection } from "next/server";
 import { redirect } from "next/navigation";
 import type { RowDataPacket } from "mysql2/promise";
 import { execute, query } from "./db";
@@ -103,6 +104,9 @@ export async function destroySession(): Promise<void> {
 }
 
 export async function getAdminSession(): Promise<AdminSession | null> {
+  // Mark this as request-time work before decode() compares the expiry with Date.now();
+  // otherwise Cache Components flags the clock read during prerendering.
+  await connection();
   return decode((await cookies()).get(SESSION_COOKIE)?.value);
 }
 
